@@ -11,7 +11,17 @@
 In this graph, the blue line represents the runtimes by following <b>Method 1</b> and the orange line represents the runtimes by following <b>Method 2</b>.
 
 <h4>Method 1:</h4>
-<p>The method one proposes calculating the state vectors after every layer of gate operations</p>
+<p>The method one proposes calculating the state vectors after every layer of gate operations. Here a layer of gate operations is defined as the collective operation of the gates across all wires which lie in the sam vertical position. As an example, in the circuit: </p>
+<br>
+<p>q0 --X--H--</p>
+<p>q1 --Y--Z--</p>
+<p>q2 --Z--X--</p>
+<br>
+
+<p>the layers would be :</p>
+<br>
+<p>layer 1: </p>
+<br>
 
 <h4>Method 2:</h4>
 <p></p>
