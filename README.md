@@ -20,8 +20,65 @@ In this graph, the blue line represents the runtimes by following <b>Method 1</b
 
 <p>the layers would be :</p>
 <br>
-<p>layer 1: </p>
+<p>layer 1: X, Y, X</p>
+<p>layer 2: H, Z, X</p>
 <br>
+
+<p>Following Method 1, the cumulative operator for a layer is first calculated using the tensor (kronecker) product which represents a multi-qubit operator which operates directly on the whole system's state vector. For the given circuit, we can mathematically write, </p>
+
+<br>
+<p>layer 1: <img src="https://latex.codecogs.com/svg.latex?\color{White}X%20\otimes%20Y%20\otimes%20X" alt="X tensor Y tensor X" /></p>
+<p>layer 2: <img src="https://latex.codecogs.com/svg.latex?\color{White}H%20\otimes%20Z%20\otimes%20X" alt="H tensor Z tensor X" /></p>
+<br>
+
+<p>The code follows by first calculating the multi-gate qubit operator for each layer as it traverses through the input circuit by following the kronecker product operation among the gates in that layer. Following the notation, we go from top-to-bottom and left-to-right. The top-to-bottom rule can be seen in the mathematical formulation of the operation. In the code, this is done using numpy's kron function. Calculations for the layer 2's operator are shown below: </p>
+
+```math
+H\ \otimes\ Z\ \otimes\ X\ =
+\frac{1}{\sqrt{2}}\begin{bmatrix}
+1 & 1 \\
+1 & -1 
+\end{bmatrix} \otimes
+\begin{bmatrix}
+1 & 0 \\
+0 & -1 
+\end{bmatrix} \otimes
+\begin{bmatrix}
+0 & 1 \\
+1 & 0 
+\end{bmatrix}\ =
+\frac{1}{\sqrt{2}}\begin{bmatrix}
+1 & 1 \\
+1 & -1 
+\end{bmatrix} \otimes
+\begin{bmatrix}
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & -1 \\
+0 & 0 & -1 & 0 \\
+\end{bmatrix}
+```
+
+```math
+= \frac{1}{\sqrt{2}}\begin{bmatrix}
+0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & -1 & 0 & 0 & 0 & -1 \\
+0 & 0 & -1 & 0 & 0 & 0 & -1 & 0 \\
+0 & 1 & 0 & 0 & 0 & -1 & 0 & 0 \\
+1 & 0 & 0 & 0 & -1 & 0 & 0 & 0 \\
+0 & 0 & 0 & -1 & 0 & 0 & 0 & 1 \\
+0 & 0 & -1 & 0 & 0 & 0 & 1 & 0 
+\end{bmatrix}
+```
+
+<p>After the cumulative multi-gate operator has been calculated, the operation of this operator on the state vector looks like:</p>
+
+```math
+\vert\psi_{2}\rangle = (Layer\ 2\ operator)\cdot\vert\psi_{1}\rangle
+```
+
+<p>Here, the statevector on LHS is the one formed after the operator for the layer is applied on the previou statevector (the statevector on the RHS).</p>
 
 <h4>Method 2:</h4>
 <p></p>
