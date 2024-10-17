@@ -80,5 +80,24 @@ H\ \otimes\ Z\ \otimes\ X\ =
 
 <p>Here, the statevector on LHS is the one formed after the operator for the layer is applied on the previou statevector (the statevector on the RHS).</p>
 
+<p>In this approach, the code has no need to look for the special case of the CNOT gate or the Toffoli Gate and can easily go on with the kronecker multiplications to form the final operator. However, this is not the case in Method 2.</p>
+
 <h4>Method 2:</h4>
-<p></p>
+<p>This method follows a similar approach, but instead of separating the circuit into vertical gate layers, the circuit is seen as a collection of block(s) and/or layer(s). The principle difference in Method 2 is that the single qubit gates are not operated upon to form a cumulative multi-gate operator for the whole circuit and thenoperated upon the state vector of the system. Instead of this, for each wire, the single qubit gates are operated upon the corresponding wire sequentially using matrix multiplications until a multi-qubit gate like the CNOT gate or the Toffoli gate. The portion of the circuit before or after or in-between the vertical layer(s) where the multi-qubit gate(s) is used is called here as a block of the circuit.</p>
+
+<p>Following the above definition, for each block, until the block ends, for each wire the single-qubit gates are operated on the corresponding wire sequentially, thus always maintaining the dimension of 2 x 2. After the end of the block, the final matrix for each wire, representing the combined transformation in that block for that wire, is multiplied among themselves using the kronecker product to form the multi-qubit operator for the whole system.</p>
+
+<p>Here, end of the block means that either the whole circuit has ended or a multi-qubit gate has been encountered in the circuit. Once this happens, the multi-qubit operators are matrix-multiplied to form the matrix of combined operation. This particular part of this method is similar to the layer-based calculation(s) taking place in Method 1.</p>
+
+<p>As an example, in the circuit:</p>
+<br>
+<p>q0 --X--H--.</p>
+<p>q1 --Y--Z--x</p>
+<p>q2 --Z--X--I</p>
+<br>
+
+<p>the blocks would be :</p>
+<br>
+<p>block 1: [[X, H], [Y, Z], [Z, X]]</p>
+<p>block 2: [.x, I]</p>
+<br>
