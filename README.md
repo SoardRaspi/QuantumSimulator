@@ -172,3 +172,25 @@ The code takes the circuit input as a multiline string input. The code starts wi
 
 <li>The CNOT and Toffoli gates can only be applied to 2 and 3 consecutive qubits respectively. In the current code, in a given vertical layer, there cannot be any qubits(s) in between the control and target qubits as the code does not support dynamic multi-qubit operation matrix formation.</li>
 </ol>
+
+<h3>Examples of valid circuit input:</h3>
+<p>Uses CNOT gate</p>
+<p>q0 X--H--.</p>
+<p>q1 Y--Z--x</p>
+<p>q2 Z--X--I</p>
+
+<p>Uses Toffoli gate</p>
+<p>q0 X--H--.</p>
+<p>q1 Y--Z--.</p>
+<p>q2 Z--X--x</p>
+
+<h3>Examples of invalid circuit input:</h3>
+<p>Uses CNOT gate</p>
+<p>q0 X--H--.</p>
+<p>q1 Y--Z--I</p>
+<p>q2 Z--X--x</p>
+
+<p>Uses Toffoli gate</p>
+<p>q0 X--H--.</p>
+<p>q1 Y--Z--.</p>
+<p>q2 Z-----x</p>
