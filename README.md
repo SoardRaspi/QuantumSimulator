@@ -101,3 +101,18 @@ H\ \otimes\ Z\ \otimes\ X\ =
 <p>block 1: [[X, H], [Y, Z], [Z, X]]</p>
 <p>block 2: [.x, I]</p>
 <br>
+
+<h3>Code Usage</h3>
+The code takes the circuit input as a multiline string input. The code starts with asking for the number of qubits required as the input. After taking the number of qubits as input, the code continues to take the wires as input. This means that for each new line as input, the input is the sequence of gates which are operated on the qubit. For each qubit's wire, the input is expected to contain the symbols representing the gate operation(s). These gate symbols are separated using the "--" symbol. If no operation is to be applied, the Identity gate operation is used. Following is the list of symbols used to refer to the different Quantum Gates accepted by the circuit:
+
+<ul>
+  <li>X: PauliX Gate</li>
+  <li>Y: PauliY Gate</li>
+  <li>Z: PauliZ Gate</li>
+  <li>I: Identity Gate</li>
+  <li>.c: CNOT Gate</li>
+  <li>..t: Toffoli Gate</li>
+<!--   <li>x: RX(theta) Gate</li>
+  <li>y: RY(theta) Gate</li>
+  <li>z: RZ(theta) Gate</li> -->
+</ul>
