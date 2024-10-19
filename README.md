@@ -1,6 +1,44 @@
 <h1>QOSF Cohort 10 Screening Tasks' Solutions</h1>
 <p>This repository contains the solutions to the QSOF Cohort 10 Screening Tasks. The folders represent the code and other related media items to the individual tasks. In the sections below, the problem statement of the tasks and approach/solution is described in brief. A brief description of how to use the code along with the requirements for that individual code is also mentioned. The folder for each task contains the code file and the related media.</p>
 
+<h3>Requirements:</h3>
+```
+appdirs==1.4.4
+autograd==1.7.0
+autoray==0.6.12
+cachetools==5.5.0
+certifi==2024.8.30
+charset-normalizer==3.4.0
+contourpy==1.3.0
+cycler==0.12.1
+dill==0.3.9
+fonttools==4.54.1
+idna==3.10
+kiwisolver==1.4.7
+matplotlib==3.9.2
+mpmath==1.3.0
+networkx==3.4.1
+numpy==1.26.4
+packaging==24.1
+pbr==6.1.0
+PennyLane==0.38.0
+PennyLane_Lightning==0.38.0
+pillow==11.0.0
+pyparsing==3.2.0
+python-dateutil==2.9.0.post0
+qiskit==1.2.4
+requests==2.32.3
+rustworkx==0.15.1
+scipy==1.14.1
+six==1.16.0
+stevedore==5.3.0
+symengine==0.13.0
+sympy==1.13.3
+toml==0.10.2
+typing_extensions==4.12.2
+urllib3==2.2.3
+```
+
 <h2>Task 1</h2>
 <h3>Problem Statement:</h3> 
 <p>Task 1 asks to write a code to make a state vector simulator from scratch. This is to understand how the gate operates on the states mathematically.</p>
@@ -102,8 +140,8 @@ H\ \otimes\ Z\ \otimes\ X\ =
 <p>block 2: [.x, I]</p>
 <br>
 
-<h3>Code Usage</h3>
-The code takes the circuit input as a multiline string input. The code starts with asking for the number of qubits required as the input. After taking the number of qubits as input, the code continues to take the wires as input. This means that for each new line as input, the input is the sequence of gates which are operated on the qubit. For each qubit's wire, the input is expected to contain the symbols representing the gate operation(s). These gate symbols are separated using the "--" symbol. If no operation is to be applied, the Identity gate operation is used. Following is the list of symbols used to refer to the different Quantum Gates accepted by the circuit:
+<h3>Code Usage:</h3>
+The code takes the circuit input as a multiline string input. The code starts with asking for the number of qubits required as the input. After taking the number of qubits as input, the code continues to take the wires as input. This means that for each new line as input, the input is the sequence of gates which are operated on the qubit. For each qubit's wire, the input is expected to contain the symbols representing the gate operation(s). These gate symbols are separated using the "--" symbol. If no operation is to be applied, the Identity gate operation should be used. Following is the list of symbols used to refer to the different Quantum Gates accepted by the circuit:
 
 <ul>
   <li>X: PauliX Gate</li>
@@ -116,3 +154,12 @@ The code takes the circuit input as a multiline string input. The code starts wi
   <li>y: RY(theta) Gate</li>
   <li>z: RZ(theta) Gate</li> -->
 </ul>
+
+<h3>Limitations of the Code:</h3>
+<ol>
+<li>The code only accepts the gate symbols from the list of valid symbols given above. The gate symbol characters are case-sensitive, i.e. 'X' cannot be replaced with 'x' or 'Y' cannot be replaced with 'y' and so on.</li>
+
+<li>There shoueld be a gate operator character after every '--' symbol. If this is not the pattern being followed, the code will give error saying that the dimensions of the operator matrices do not match as the length of layers won't be the same for all the layers.</li>
+
+<li>The CNOT and Toffoli gates can only be applied to 2 and 3 consecutive qubits respectively. In the current code, in a given vertical layer, there cannot be any qubits(s) in between the control and target qubits as the code does not support dynamic multi-qubit operation matrix formation.</li>
+</ol>
