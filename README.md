@@ -3,7 +3,7 @@
 
 These are the following requirements to run the codes in the Task folders.
 
-```math
+```
 appdirs==1.4.4
 autograd==1.7.0
 autoray==0.6.12
@@ -43,7 +43,7 @@ urllib3==2.2.3
 Instead of this you can run the following ```pip``` commands to run the code:
 
 
-```math
+```
 pip install numpy
 pip install matplotlib
 ```
