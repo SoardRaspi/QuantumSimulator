@@ -1,8 +1,9 @@
 <h1>QOSF Cohort 10 Screening Tasks' Solutions</h1>
 <p>This repository contains the solutions to the QSOF Cohort 10 Screening Tasks. The folders represent the code and other related media items to the individual tasks. In the sections below, the problem statement of the tasks and approach/solution is described in brief. A brief description of how to use the code along with the requirements for that individual code is also mentioned. The folder for each task contains the code file and the related media.</p>
 
-<h3>Requirements:</h3>
-```
+These are the following requirements to run the codes in the Task folders.
+
+```math
 appdirs==1.4.4
 autograd==1.7.0
 autoray==0.6.12
@@ -37,6 +38,14 @@ sympy==1.13.3
 toml==0.10.2
 typing_extensions==4.12.2
 urllib3==2.2.3
+```
+
+Instead of this you can run the following ```pip``` commands to run the code:
+
+
+```math
+pip install numpy
+pip install matplotlib
 ```
 
 <h2>Task 1</h2>
