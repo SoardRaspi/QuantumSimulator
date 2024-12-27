@@ -1,5 +1,7 @@
-<h1>QOSF Cohort 10 Screening Tasks' Solutions</h1>
-<p>This repository contains the solutions to the QSOF Cohort 10 Screening Tasks. The folders represent the code and other related media items to the individual tasks. In the sections below, the problem statement of the tasks and approach/solution is described in brief. A brief description of how to use the code along with the requirements for that individual code is also mentioned. The folder for each task contains the code file and the related media.</p>
+<!--<h1>QOSF Cohort 10 Screening Tasks' Solutions</h1>
+<p>This repository contains the solutions to the QSOF Cohort 10 Screening Tasks. The folders represent the code and other related media items to the individual tasks. In the sections below, the problem statement of the tasks and approach/solution is described in brief. A brief description of how to use the code along with the requirements for that individual code is also mentioned. The folder for each task contains the code file and the related media.</p>-->
+
+<h1>This is my implementation of a very basic quantum simulator for singlr and multi-qubit circuits supporting a few single and multi-qubit gates.</h1>
 
 These are the following requirements to run the codes in the Task folders.
 
